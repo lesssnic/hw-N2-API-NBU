@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="./assets/js/app.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script defer src="./assets/js/app.js"></script>
+    
     <title>Document</title>
 </head>
 <body>
-    <h1>Hi Anton!</h1>
+    <div class="container" id="app">
+        <h3>Всего: {{(totalDebt/1000000000).toFixed(3)}} млрд. грн.</h3>
+        <h3>Долг по выбранным годам: {{(totalDebtChecked/1000000000).toFixed(3)}} млрд. грн.</h3>
+        <button @click='chooseAll'>Выбрать все/Снять выделение</button>
+        <div v-for='item in debtCheck'>
+            <input v-model='item.checked' type="checkbox" name="">
+            Год {{item.year}} : Доля для выплат {{(item.attraction/1000000000).toFixed(3)}} млрд. грн.
+        </div>
+        
+    </div>
 </body>
 </html>
